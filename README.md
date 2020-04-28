@@ -13,4 +13,6 @@ However, you will be hidden from view and if you don't stay with your zebrafish 
 black, you'll die.  
 
 When the level ends, the background will turn blue and you need hover over blue to move on.
-At any point if you want to restart the level, click on the fish you are following.
+At any point if you want to restart the level, click on the fish you are following.  
+
+(FYI it'll take a while to load when it starts up)
