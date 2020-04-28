@@ -1,5 +1,5 @@
-![tato](display_tato.png)
-#Follow The Zebrafish
+![tato](display_tato.png) Follow The Zebrafish
+==============================================
 Keep your cursor with the bright zebrafish until the end of the level.  
 If you hit the black background (and sometimes green), you'll die.
 
