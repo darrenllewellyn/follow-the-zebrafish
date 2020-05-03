@@ -80,9 +80,9 @@ def zombie_path(pt_1, pt_2):
     if y_length < 0:
         y_neg = True
         y_length = y_length * -1
-    x_step = x_length / 7
-    y_step = y_length / 7
-    for chunk in range(1,10):
+    x_step = x_length / 8
+    y_step = y_length / 8
+    for chunk in range(0,11):
         new_x = chunk * x_step
         if y_neg:
             new_y = pt_1[1] + (y_step * chunk)
@@ -152,6 +152,7 @@ def main():
     game_over = False
     unflipped = True
     zombie_go = False
+    z_pts = []
     glowless_go = False
     glowless_madness = False
     safe_switch = False
@@ -250,7 +251,7 @@ def main():
             elif continue_switch:
                 screen.blit(start_gate_2, start_gate_rect)
                 safe_switch = False
-        elif started and not done:
+        elif started and not done and not game_over:
             if not level_1_clear:
                 if back_count < 857:
                     screen.blit(level_1_background[back_count], map_rect)
@@ -321,19 +322,21 @@ def main():
 
         #ZOMBIE_GO
         if zombie_go and started and not done and not safe_switch:
-            z_pts = [0]
             if z_count == 0:
-                z_pts[0] = zombie_pts()
+                if not z_pts:
+                    z_pts.append(zombie_pts())
+                else:
+                    z_pts[0] = zombie_pts()
                 z_warn_rect.center = z_pts[0][0]  ##
                 z_path = zombie_path(z_pts[0][0], z_pts[0][1])
                 r_zombie = pygame.transform.rotate(zombie, zombie_angle(z_pts[0][0], z_pts[0][1]))
             elif z_count < 15:
                 screen.blit(z_warn, z_warn_rect)
             elif 35 <= z_count <= 44:
-                screen.blit(r_zombie, zombie_rect)
                 path_steps = z_count - 35
                 if path_steps < len(z_path):
                     zombie_rect.center = z_path[path_steps]
+                screen.blit(r_zombie, zombie_rect)
                 if not hide_behind_fish and not done:
                     if zombie_rect.colliderect(tato_rect):
                         game_over = True
